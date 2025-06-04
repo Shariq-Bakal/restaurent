@@ -1,0 +1,56 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+    color: rgb(0, 0, 0);
+}
+body {
+  background-size: cover;
+  background-position: center;
+  font-family: 'Inter', sans-serif;
+}
+
+main{
+    min-height: 100vh;
+}
+.homepagecontainer{
+  background-image: url('/images/backrest.jpg');
+  border: 2px solid red;
+  min-width: 55%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 22px;
+  align-items: center;
+  justify-content: center;
+}
+.homepagecontainer h1{
+  font-size: 6rem;
+}
+.homepagecontainer p{
+  font-size: 1.6  rem;
+}
+.specialities{
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2;
+  background-color: #f4f4f4;
+  min-height: 10rem;
+}
+.speciality{
+  margin: 2px;
+  color: black;
+  line-height: 2rem;
+  text-align: center;
+  background-color: #f4f4f4;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.speciality h2{
+  color: black;
+}
+
+.ourmenu{
+  color: black;
+}
