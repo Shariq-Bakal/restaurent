@@ -1,7 +1,8 @@
 import Layout from '../components/Layout'
 import Button from '@mui/material/Button';
 import Speciality from '../components/Speciality';
-import Ourmenu from '../components/Ourmenu';
+import Ourfeatures from '../components/Ourfeatures';
+import Reservations from '../components/Reservations';
 const Homepage = () => {
     
   return (
@@ -12,7 +13,8 @@ const Homepage = () => {
         <Button size='large' variant="outlined" color='#121212' sx={{width:"fit-content",marginTop:6}}>Book a table</Button>
       </div>
       <Speciality/>
-      <Ourmenu/>
+      <Reservations/>
+      <Ourfeatures/>
     </Layout>
   )
 }

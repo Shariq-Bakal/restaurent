@@ -25,10 +25,10 @@ main{
   justify-content: center;
 }
 .homepagecontainer h1{
-  font-size: 6rem;
+  font-size: 5vw;
 }
 .homepagecontainer p{
-  font-size: 1.6  rem;
+  font-size: 2vw;
 }
 .specialities{
   border: 2px solid black;
@@ -46,6 +46,7 @@ main{
   background-color: #f4f4f4;
   margin-top: auto;
   margin-bottom: auto;
+  max-width: 100%;
 }
 .speciality h2{
   color: black;
@@ -53,4 +54,17 @@ main{
 
 .ourmenu{
   color: black;
+}
+@media screen and (max-width: 800px) {
+  .specialities{
+    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+     display: grid;
+      grid-template-columns: 1fr;
+  }
+}
+.our-featuresheading{
+  border: 1px solid red;
+  max-width: 100%;
+  min-height: 70vh;
+  display: flex;
 }
