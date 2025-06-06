@@ -4,10 +4,9 @@
     padding: 0px;
     color: rgb(0, 0, 0);
 }
-body {
-  background-size: cover;
-  background-position: center;
+body {  
   font-family: 'Inter', sans-serif;
+  padding-top: 70px;
 }
 
 main{
@@ -35,7 +34,8 @@ main{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2;
-  background-color: #f4f4f4;
+  background-color: #bdbdbd
+;
   min-height: 10rem;
 }
 .speciality{
@@ -43,7 +43,8 @@ main{
   color: black;
   line-height: 2rem;
   text-align: center;
-  background-color: #f4f4f4;
+  background-color: #bdbdbd
+;
   margin-top: auto;
   margin-bottom: auto;
   max-width: 100%;
@@ -62,7 +63,7 @@ main{
       grid-template-columns: 1fr;
   }
 }
-.our-featuresheading{
+.our-features{
   border: 1px solid red;
   max-width: 100%;
   min-height: 70vh;

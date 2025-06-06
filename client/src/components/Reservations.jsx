@@ -11,7 +11,8 @@ import {
   FormControlLabel,
   Radio,
   RadioGroup,
-  Typography
+  Typography,
+  Grid
 } from '@mui/material';
 
 const Reservations= () => {
@@ -40,6 +41,10 @@ const Reservations= () => {
   };
 
   return (
+    <>
+    <Box sx={{mx:'auto',width:'fit-content'}}>
+        <Typography variant='h3'>Book a Table Now</Typography>
+    </Box>
     <Box
       component="form"
       onSubmit={handleSubmit}
@@ -50,14 +55,11 @@ const Reservations= () => {
         boxShadow: 1,
         borderRadius: 2,
         display:"grid",
-        gridTemplateColumns:"1fr 1fr 1fr"
+        gridTemplateColumns:"1fr 1fr 1fr",
+        gap : 2,
+        marginTop: 2
       }}
     >
-      <Typography variant="h5" gutterBottom align="center">
-        Reservations
-      </Typography>
-      <Typography>Book a table online. Leads will reach in your email.</Typography>
-
       <TextField
         fullWidth
         label="First Name"
@@ -66,6 +68,7 @@ const Reservations= () => {
         onChange={handleChange}
         margin="normal"
         required
+        size='small'
       />
 
       <TextField
@@ -76,6 +79,7 @@ const Reservations= () => {
         onChange={handleChange}
         margin="normal"
         required
+        size='small'
       />
 
       <TextField
@@ -87,6 +91,7 @@ const Reservations= () => {
         onChange={handleChange}
         margin="normal"
         required
+        size='small'
       />
 
       <TextField
@@ -98,18 +103,44 @@ const Reservations= () => {
         onChange={handleChange}
         margin="normal"
         required
+        size='small'
       />
-
-      <Button
-        type="submit"
-        variant="contained"
+      <TextField
         fullWidth
-        size="large"
-        sx={{ mt: 3 }}
-      >
-        Submit
-      </Button>
+        label="Password"
+        name="password"
+        type="password"
+        value={formData.password}
+        onChange={handleChange}
+        margin="normal"
+        required
+        size='small'
+      />
+      <TextField
+        fullWidth
+        label="Password"
+        name="password"
+        type="password"
+        value={formData.password}
+        onChange={handleChange}
+        margin="normal"
+        required
+        size='small'
+      />
+       <Button 
+    variant="contained"
+    sx={{
+      gridColumn: "1 / -1", // Makes the button span all columns
+      justifySelf: "center", // Centers horizontally
+      width: "fit-content", // Makes button only as wide as its content
+      mt: 2 // Optional margin top
+    }}
+  >
+    Centered Button
+  </Button> 
     </Box>
+    </>
+    
   );
 };
 
