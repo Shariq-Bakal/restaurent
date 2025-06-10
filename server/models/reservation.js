@@ -1,12 +1,9 @@
 import mongoose from "mongoose";
 
 const reservationSchema = mongoose.Schema({
-  fullName: {
-    type: String,
-    required: [true, "Full name is required"],
-    minlength: [4, "Name must be at least 4 characters"],
-    maxlength: [90, "Name cannot exceed 90 characters"],
-    trim: true
+  user:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'User'
   },
  date: {
   type: Date,
@@ -33,30 +30,9 @@ const reservationSchema = mongoose.Schema({
     type: Number,
     required: [true, "Number of guests is required"],
     min: [1, "Must have at least 1 guest"],
-    max: [10, "Maximum 20 guests allowed"] // Adjust based on your policy
+    max: [10, "Maximum 10 guests allowed"] // Adjust based on your policy
   },
-  emailAddress: {
-    type: String,
-    required: [true, "Email is required"],
-    match: [
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-      "Please enter a valid email"
-    ],
-    lowercase: true,
-    trim: true
-  },
-  phoneNumber: {
-    type: String,
-    required: [true, "Phone number is required"],
-    match: [
-      /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
-      "Please enter a valid phone number"
-    ]
-  },
-  specialRequests: {
-    type: String,
-    maxlength: [500, "Special requests cannot exceed 500 characters"]
-  },
+  table:Number,
   status: {
     type: String,
     enum: ["pending", "confirmed", "cancelled", "completed"],

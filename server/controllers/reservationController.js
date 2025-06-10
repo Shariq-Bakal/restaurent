@@ -38,7 +38,7 @@ export const makeReservation = async (req,res)=>{
         res.status(201).json(newReservation)
     }
     catch(error){
-        console.log(error.message   )
+        console.log(error.message)
         res.status(404).json({message:"There was an error in posting data"})
     }
 }
