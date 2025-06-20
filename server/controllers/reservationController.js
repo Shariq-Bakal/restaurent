@@ -8,7 +8,7 @@ import Reservation from "../models/reservation.js"; // Note the .js extension
 //Get Reservations
 export const getReservations = async (req,res)=>{
     try{
-        const reservations = await Reservation.find();
+        const reservations = await Reservation.find({user:req.user.id});
         res.status(200).json(reservations)
     }
     catch(error){
@@ -30,20 +30,30 @@ export const getReservation = async(req,res)=>{
 }
 
 //Add Reservtion api
-export const makeReservation = async (req,res)=>{
-    const reservation = req.body;
-    const newReservation = new Reservation(reservation)
-    try{
-        await  newReservation.save();
-        res.status(201).json(newReservation)
-    }
-    catch(error){
-        console.log(error.message)
-        res.status(404).json({message:"There was an error in posting data"})
-    }
-}
+export const makeReservation = async (req, res) => {
+  const reservationData = req.body;
 
-//Update Reservations api
+  try {
+    // Attach the user ID from the JWT to the reservation data
+    if (!req.user || !req.user.id) {
+      throw new Error('User is not authenticated or no user ID found');
+    }
+
+    reservationData.user = req.user.id;
+
+    // Create the reservation document in the database
+    const reservation = await Reservation.create(reservationData);
+
+    // Respond with the created reservation and a 201 status code
+    res.status(201).json(reservation); // Use 201 for successful creation
+
+  } catch (error) {
+    console.log(error.message);
+    // Respond with a 400 status code for errors (or 500 for server errors)
+    res.status(400).json({ message: "There was an error in posting data" });
+  }
+};
+
 
 export const updateReservation = async (req,res)=>{
     const {id:_id} = req.params;

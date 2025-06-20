@@ -3,8 +3,11 @@ import cors from "cors";
 import mongoose from "mongoose";
 import reservationRoutes from "./routes/reservationRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
+import dotenv from "dotenv"
+dotenv.config()
 const app  = express();
 const Port = process.env.Port || 5000;
+
 
 
 app.use(cors());
