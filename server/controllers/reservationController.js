@@ -1,21 +1,37 @@
 // In your controller file (reservationController.js) or wherever you need the model
 import Reservation from "../models/reservation.js"; // Note the .js extension
+import asyncHandler from "express-async-handler"
 
 //Controllers 
 
 //Make Reservations 
 
 //Get Reservations
-export const getReservations = async (req,res)=>{
+// export const getReservations = async (req,res)=>{
+//     try{
+//         const reservations = await Reservation.find({user:req.user.id});
+//         res.status(200).json(reservations)
+//     }
+//     catch(error){
+//         console.log(error)
+//         res.status(404).json({message:"Not found"})
+//     }
+// }
+export const getReservations = asyncHandler( async(req,res)=>{
+    const page = req.query.page;
+    const limit = req.query.limit;
+    const skipIndex = (page-1)*limit;
     try{
-        const reservations = await Reservation.find({user:req.user.id});
-        res.status(200).json(reservations)
+        const reservations = await Reservation.find().
+    sort({date:1}).limit(limit).skip(skipIndex).exec();
+    res.status(200).json(reservations)
     }
     catch(error){
-        console.log(error)
-        res.status(404).json({message:"Not found"})
+        res.status(500).json({message:"Error occured while fetching data"})
     }
-}
+})
+
+
 //Get Single Reservation
 export const getReservation = async(req,res)=>{
     const {id:_id} = req.params

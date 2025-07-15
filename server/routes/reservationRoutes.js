@@ -4,7 +4,6 @@ const router = express.Router();
 
 import { protect } from "../middleware/authMiddleware.js";
 
-
 //get reservations
 
 router.get("/", protect, getReservations);

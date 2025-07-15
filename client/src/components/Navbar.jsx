@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 const navItems = ['Home', 'About', 'Contact'];
 
 export default function Navbar() {
@@ -35,11 +36,8 @@ export default function Navbar() {
             ))}
           </Box>
           <div>
-            {user ?  (
-              <Button color="inherit">Logout</Button>
-            ):(
-              <Button color="inherit">Login</Button>
-            )}
+              <Button color="inherit"> <Link to="/login">Login</Link></Button>
+              <Button color="inherit"><Link to="/register">Register</Link></Button>
           </div>
           
         </Toolbar>
