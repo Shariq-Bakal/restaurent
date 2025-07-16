@@ -3,7 +3,9 @@ import cors from "cors";
 import mongoose from "mongoose";
 import reservationRoutes from "./routes/reservationRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
+import categoryRoutes from "./routes/categoryRoutes.js"
 import dotenv from "dotenv"
+import menuRoutes from "./routes/menuRoutes.js"
 dotenv.config()
 const app  = express();
 const Port = process.env.Port || 5000;
@@ -15,6 +17,8 @@ app.use(express.json());
 
 app.use("/api/reservations", reservationRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/menus", menuRoutes);
 
 mongoose.connect('mongodb+srv://shariq:shariq121@cluster1.nap5mtj.mongodb.net/')
 .then(()=>{
