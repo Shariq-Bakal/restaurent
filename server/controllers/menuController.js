@@ -7,7 +7,7 @@ export const createFood = async (req,res)=>{
     
     try{
         const { name, price, category, description } = req.body;
-        const categoryExists = await Category.findById(categoryId);
+        const categoryExists = await Category.findById(category);
           if (!name || !price || !category) {
       return res.status(400).json({ message: "Name, price and category are required" });
       const categoryExists = await Category.findById(category);
