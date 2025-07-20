@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import Speciality from '../components/Speciality';
 import Ourfeatures from '../components/Ourfeatures';
 import Reservations from '../components/Reservations';
+import Categories from '../components/Categories';
 const Homepage = () => {
     
   return (
@@ -15,6 +16,7 @@ const Homepage = () => {
       <Speciality/>
       <Reservations/>
       <Ourfeatures/>
+      <Categories/>
     </Layout>
   )
 }

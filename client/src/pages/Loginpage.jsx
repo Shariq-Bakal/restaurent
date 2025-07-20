@@ -2,6 +2,7 @@ import { Grid, Typography, TextField, Button } from "@mui/material";
 import { useState } from "react";
 import { GoogleLogin } from 'react-google-login';
 import Layout from "../components/Layout";
+import Categories from "../components/Categories";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -66,6 +67,7 @@ const LoginPage = () => {
             </Grid>
           </form>
         </Grid>
+        <Categories/>
       </Layout>
     </>
   );
