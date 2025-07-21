@@ -26,7 +26,7 @@ const Categories = () => {
     console.log(cat_id)
     console.log("Click me")
     dispatch(getDishes(cat_id));
-    navigate("/menu")
+    navigate(`/menu/${cat_id}`);
   }
 
   return (

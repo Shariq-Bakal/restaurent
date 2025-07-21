@@ -69,3 +69,8 @@ main{
   min-height: 70vh;
   display: flex;
 }
+.menu-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+   gap: 20px;
+}

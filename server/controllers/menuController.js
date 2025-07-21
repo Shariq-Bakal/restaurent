@@ -33,15 +33,15 @@ export const createFood = async (req, res) => {
 };
 
 // ✅ GET: All Foods with Populated Category
-export const getFoods = async (req, res) => {
-  try {
-    const foods = await Food.find().populate("category", "name");
-    return res.status(200).json(foods);
-  } catch (error) {
-    console.error("Get foods error:", error);
-    return res.status(500).json({ message: "Failed to fetch foods" });
-  }
-};
+// export const getFoods = async (req, res) => {
+//   try {
+//     const foods = await Food.find().populate("category", "name");
+//     return res.status(200).json(foods);
+//   } catch (error) {
+//     console.error("Get foods error:", error);
+//     return res.status(500).json({ message: "Failed to fetch foods" });
+//   }
+// };
 
 // ✅ GET: Foods by Category
 export const getFoodsByCategory = async (req, res) => {

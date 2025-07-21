@@ -1,24 +1,45 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import CardActionArea from '@mui/material/CardActionArea';
+import { useParams } from "react-router-dom";
+import { getDishes } from "../features/menu/menuSlice";
+import { useEffect } from "react";
+
 
 const Menu = () => {
   const { menus = [], isLoading, error } = useSelector((state) => state.menu || {});
+  const { cat_id } = useParams();
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if (cat_id) {
+      dispatch(getDishes(cat_id));
+    }
+  }, [dispatch, cat_id]);
 
   return (
-    <div>
-      <h2>Menus</h2>
-
-      {isLoading && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {!isLoading && menus.length === 0 && <p>No menus found.</p>}
-
-      <ul>
-        {menus.map((item) => (
-          <li key={item.id}>
-            <strong>{item.name}</strong> - {item.description}
-          </li>
+    <>
+    <h2>Menu</h2>
+    <div className="menu-container">
+      {menus.map((item) => (
+          <Card key={item.id} sx={{ maxWidth: 345, m :2 }}  >
+            <CardActionArea>
+              <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {item.name}
+          </Typography>
+          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+            {item.description}
+          </Typography>
+        </CardContent>
+            </CardActionArea>
+          </Card>
         ))}
-      </ul>
     </div>
+    </>
+    
   );
 };
 
