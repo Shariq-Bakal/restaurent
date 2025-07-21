@@ -1,58 +1,63 @@
 import Food from "../models/menu.js";
 import Category from "../models/category.js";
 
-//Post food
+// ✅ POST: Create Food
+export const createFood = async (req, res) => {
+  try {
+    const { name, price, category, description } = req.body;
 
-export const createFood = async (req,res)=>{
-    
-    try{
-        const { name, price, category, description } = req.body;
-        const categoryExists = await Category.findById(category);
-          if (!name || !price || !category) {
+    // Validate input
+    if (!name || !price || !category) {
       return res.status(400).json({ message: "Name, price and category are required" });
-      const categoryExists = await Category.findById(category);
     }
-        if(!categoryExists){
-             res.status(404).json({message:"category not found"})
-        }
-        const food = await Food.create({
-            name,
-            price,
-            category,
-            description
-        })
-       return res.status(201).json(food)
-    }
-    catch(error){
-        console.log(error);
-        return res.status(500).json({message:"Failed to post data"})
-    }
-}
-export const getFoods = async (req,res)=>{
-    try{
-        const foods = await Food.find().populate('category', 'name')
-        return res.status(200).json(foods)
 
+    // Check if category exists
+    const categoryExists = await Category.findById(category);
+    if (!categoryExists) {
+      return res.status(404).json({ message: "Category not found" });
     }
-    catch(error){
-        console.log(error)
-        return res.status(500).json({message:"Failed to post data"})
-    }
-}
 
+    // Create food item
+    const food = await Food.create({
+      name,
+      price,
+      category,
+      description
+    });
 
-export const getFoodsByCategory = async (req,res)=>{
-   const categoryId = req.query.category_id; // Get the category_id from query params
-   if(!categoryId){
-    return res.json({message:"Category ID IS REQUIRED"})
-   }
-   try{
-        const foods = await Food.find().populate('category', 'name')
-        return res.status(200).json(foods)
+    return res.status(201).json(food);
+  } catch (error) {
+    console.error("Create food error:", error);
+    return res.status(500).json({ message: "Failed to create food" });
+  }
+};
 
+// ✅ GET: All Foods with Populated Category
+export const getFoods = async (req, res) => {
+  try {
+    const foods = await Food.find().populate("category", "name");
+    return res.status(200).json(foods);
+  } catch (error) {
+    console.error("Get foods error:", error);
+    return res.status(500).json({ message: "Failed to fetch foods" });
+  }
+};
+
+// ✅ GET: Foods by Category
+export const getFoodsByCategory = async (req, res) => {
+  try {
+    const category = req.query.category; // expected to be category _id
+
+    let menus;
+    if (category) {
+      menus = await Food.find({ category }).populate("category", "name");
+    } else {
+      menus = await Food.find().populate("category", "name");
     }
-    catch(error){
-        console.log(error)
-        return res.status(500).json({message:"Failed to post data"})
-    }
-}
+
+    return res.status(200).json(menus);
+  } catch (error) {
+    console.error("Get foods by category error:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};

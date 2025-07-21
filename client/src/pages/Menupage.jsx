@@ -1,10 +1,12 @@
-import Layout from "../components/Layout"
+
+import Layout from '../components/Layout'
+import Menu from '../components/Menu'
 
 const Menupage = () => {
   return (
     <Layout>
-        <div>Menupage</div>
-    </Layout>
+        <Menu/>
+  </Layout>
     
   )
 }
