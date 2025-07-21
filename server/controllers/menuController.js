@@ -39,3 +39,20 @@ export const getFoods = async (req,res)=>{
         return res.status(500).json({message:"Failed to post data"})
     }
 }
+
+
+export const getFoodsByCategory = async (req,res)=>{
+   const categoryId = req.query.category_id; // Get the category_id from query params
+   if(!categoryId){
+    return res.json({message:"Category ID IS REQUIRED"})
+   }
+   try{
+        const foods = await Food.find().populate('category', 'name')
+        return res.status(200).json(foods)
+
+    }
+    catch(error){
+        console.log(error)
+        return res.status(500).json({message:"Failed to post data"})
+    }
+}
