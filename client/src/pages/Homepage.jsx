@@ -4,10 +4,12 @@ import Speciality from '../components/Speciality';
 import Ourfeatures from '../components/Ourfeatures';
 import Reservations from '../components/Reservations';
 import Categories from '../components/Categories';
+import Spinner from '../components/spinner';
 const Homepage = () => {
     
   return (
     <Layout>
+      <Spinner/>
       <div className='homepagecontainer'>
         <h1>WELCOME</h1>
         <p>You should taste for yourself</p>
