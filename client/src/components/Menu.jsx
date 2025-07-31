@@ -5,17 +5,21 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import { useParams } from "react-router-dom";
+//useParams is a React Router hook that lets you read variables from the URL.
 import { getDishes } from "../features/menu/menuSlice";
 import { useEffect } from "react";
 
 
 const Menu = () => {
   const { menus = [], isLoading, error } = useSelector((state) => state.menu || {});
-  const { cat_id } = useParams();
+  const { cat_id } = useParams(); //  This gets the ID from URL like /menu/123
   const dispatch = useDispatch()
   useEffect(() => {
     if (cat_id) {
-      dispatch(getDishes(cat_id));
+      dispatch(getDishes(cat_id));//Fetch dishes again using the ID from the URL
+    }
+    else{
+      dispatch(getDishes())
     }
   }, [dispatch, cat_id]);
 

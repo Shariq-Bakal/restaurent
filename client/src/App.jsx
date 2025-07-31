@@ -23,6 +23,7 @@ function App() {
       <Route path='/register' element = {<Registerpage/>}/>
       <Route path='/dashboard' element = {<Dashboardpage/>}/>
       <Route path="/menu/:cat_id" element={<Menupage/>} />
+      <Route path="/menu" element={<Menupage/>} />
     </Routes>
     </>
   )

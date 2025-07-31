@@ -13,7 +13,7 @@ export default function Navbar() {
   const user = null;
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar  color='info' position="fixed" enableColorOnDark>
+      <AppBar color='#e1f5fe' position="fixed" enableColorOnDark>
         <Toolbar>
           <IconButton
             size="large"

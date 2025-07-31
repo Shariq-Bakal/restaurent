@@ -2,10 +2,12 @@
 *{
     margin: 0px;
     padding: 0px;
-    color: rgb(0, 0, 0);
+    color: #424242;
 }
 body {  
-  font-family: 'Inter', sans-serif;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: normal;
   padding-top: 70px;
 }
 
@@ -13,7 +15,7 @@ main{
     min-height: 100vh;
 }
 .homepagecontainer{
-  background-image: url('/images/backrest.jpg');
+  background-image: url('/images/healthy.jpg');
   border: 2px solid red;
   min-width: 55%;
   display: flex;
@@ -28,6 +30,15 @@ main{
 }
 .homepagecontainer p{
   font-size: 2vw;
+}
+.homepagecontainer-description{
+  color: #000000;
+  font-size: 2px;
+
+  max-width: 35ch; /* Limits width to ~65 characters (optimal for readability) */
+  font-size: 1.2rem !important;
+  line-height: 30px;
+  margin-top: 3px;
 }
 .specialities{
   border: 2px solid black;
@@ -89,4 +100,4 @@ main{
   100% {
     transform: rotate(360deg);
   }
-} 
+}   
