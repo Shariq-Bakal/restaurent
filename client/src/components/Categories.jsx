@@ -12,27 +12,33 @@ const Categories = () => {
   const { categories, isLoading, isError, message } = useSelector(
     (state) => state.category
   );
-  console.log("Categories data:", categories);
-
 
   useEffect(() => {
-    dispatch(getCategories());
+    dispatch(getCategories());  // Fetch categories when the component mounts
   }, [dispatch]);
 
-  if (isLoading) return <p>Loading...</p>;
+  // Handle loading and error states
+  if (isLoading) return <p>Loading categories...</p>;
   if (isError) return <p>Error: {message}</p>;
 
-  const getMenu = (cat_id)=>{
-    console.log(cat_id)
-    console.log("Click me")
-    dispatch(getDishes(cat_id));
-    navigate(`/menu/${cat_id}`);
-  }
+  // Dispatch menu items based on category
+  const getMenu = (cat_id) => {
+    if (cat_id) {
+      dispatch(getDishes(cat_id));  // Fetch dishes for selected category
+      navigate(`/menu/${cat_id}`);  // Navigate to the specific category page
+    } else {
+      dispatch(getDishes());  // Fetch all dishes if no category is selected
+      navigate('/menu');  // Optionally navigate to a default menu page
+    }
+  };
 
   return (
-    <div>
+    <div className="category-buttons">
+      <Button onClick={() => getMenu()}>All</Button>  {/* Button for All Categories */}
       {categories?.map((category) => (
-        <Button onClick={()=>getMenu(category._id)} key={category._id}>{category.name}</Button>
+        <Button onClick={() => getMenu(category._id)} key={category._id}>
+          {category.name}
+        </Button>
       ))}
     </div>
   );
