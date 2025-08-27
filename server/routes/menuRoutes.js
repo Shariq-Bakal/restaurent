@@ -1,10 +1,12 @@
 import express from "express";
-import { createFood,  getFoodsByCategory } from "../controllers/menuController.js";
+import { filterMenu, createFood} from "../controllers/menuController.js";
+
 const router = express.Router()
 
 
 router.post("/",createFood);
 // router.get("/",getFoods)
-router.get("/",getFoodsByCategory)
+// router.get("/",getFoodsByCategory)
 
+router.get("/",filterMenu);
 export default router;

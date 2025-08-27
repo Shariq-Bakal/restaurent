@@ -34,6 +34,7 @@ const Categories = () => {
 
   return (
     <div className="category-buttons">
+      <h2>Categories: </h2>
       <Button onClick={() => getMenu()}>All</Button>  {/* Button for All Categories */}
       {categories?.map((category) => (
         <Button onClick={() => getMenu(category._id)} key={category._id}>

@@ -3,9 +3,12 @@ import Menu from "../models/menu.js";
 
 // Define the filterMenu function that handles HTTP requests
 export const filterMenu = async (req, res) => {
+    console.log(req.url);  // Logs the full URL (path + query parameters)
+
     try {
         // Check if there are any query parameters in the URL
         // Object.keys(req.query).length === 0 means no ?sort=high or ?category=pizza etc.
+        // /An array containing the keys (property names) of the object obj. The keys are returned as strings.
         if (Object.keys(req.query).length === 0) {
             // If no filters, get ALL menu items from database
             const menuItems = await Menu.find({});
@@ -17,14 +20,24 @@ export const filterMenu = async (req, res) => {
         let query = {};
         // Create an $and array to hold multiple filter conditions
         // $and means ALL conditions must be true
-        query['$and'] = [];
+        query['$and'] = []; // $andused to combine multiple query condition
         // Variable to store sorting preference (high/low)
+
+//         db.collection.find({
+//   $and: [
+//     { price: { $gte: 10 } },   // price must be greater than or equal to 10
+//     { price: { $lt: 50 } },     // price must be less than 50
+//     { category: "Appetizers" }  // category must be "Appetizers"
+//   ]
+// });
+        console.log(query,"query")
         let sort = null;
 
         // Loop through each query parameter in the URL
         // Example: for ?category=pizza&price=10,20&sort=high
         for (let key in req.query) {
             // Check if current parameter is "sort"
+            console.log(key)
             if (key === "sort") {
                 // Store the sort value (either "high" or "low")
                 sort = req.query[key];

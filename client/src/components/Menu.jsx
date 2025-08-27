@@ -11,6 +11,8 @@ import { useEffect } from "react";
 import Categories from "./Categories";
 
 
+
+
 const Menu = () => {
   const { menus = [], isLoading, error } = useSelector((state) => state.menu || {});
   // const { cat_id } = useParams(); //  This gets the ID from URL like /menu/123
@@ -21,9 +23,11 @@ const Menu = () => {
 
   return (
     <>
-    <h2>Menu</h2>
-    <Categories/>
+    <div className="search-input-container">
+      <input type="text" id="search" className="search-input" placeholder="Search..." />
+    </div>
     
+    <Categories/>
     <div className="menu-container">
       {menus.map((item) => (
           <Card key={item.id} sx={{ maxWidth: 345, m :2 }}  >
@@ -31,6 +35,9 @@ const Menu = () => {
               <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {item.name}
+          </Typography>
+          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+            {item.price}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
             {item.description}

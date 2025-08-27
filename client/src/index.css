@@ -191,3 +191,17 @@ image{
   margin: 4px;
   border: 2px solid red;
 }
+
+.search-input {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 30px; /* Rounded corners */
+  outline: none;
+  transition: all 0.3s ease;
+}
+.search-input-container{
+  width: 50%;
+  margin: auto;
+}
