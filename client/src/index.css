@@ -81,9 +81,7 @@ main{
   display: flex;
 }
 .menu-container{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 20px;
+  border: 1px solid red;
 }
 .loader{
   border: 10px solid gray;
@@ -191,17 +189,15 @@ image{
   margin: 4px;
   border: 2px solid red;
 }
-
-.search-input {
-  width: 100%;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: 2px solid #ccc;
-  border-radius: 30px; /* Rounded corners */
-  outline: none;
-  transition: all 0.3s ease;
-}
-.search-input-container{
-  width: 50%;
+.search-button-menu{
+  display: flex;
+  width: 80vw;
   margin: auto;
+  margin-bottom: 22px;
+  margin-top: 22px;
+}
+.main-menu-container{
+  border: 2px solid blue;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
 }

@@ -23,14 +23,9 @@ const Menu = () => {
 
   return (
     <>
-    <div className="search-input-container">
-      <input type="text" id="search" className="search-input" placeholder="Search..." />
-    </div>
-    
-    <Categories/>
     <div className="menu-container">
       {menus.map((item) => (
-          <Card key={item.id} sx={{ maxWidth: 345, m :2 }}  >
+          <Card key={item.id} sx={{ maxWidth: "100%", m :2,height:"20rem" }}  >
             <CardActionArea>
               <CardContent>
           <Typography gutterBottom variant="h5" component="div">
