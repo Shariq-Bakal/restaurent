@@ -81,7 +81,7 @@ main{
   display: flex;
 }
 .menu-container{
-  border: 1px solid red;
+  border: 1px solid silver;
 }
 .loader{
   border: 10px solid gray;
@@ -187,17 +187,17 @@ image{
 
 .category-buttons{
   margin: 4px;
-  border: 2px solid red;
+  border: 1px solid silver;
 }
 .search-button-menu{
   display: flex;
-  width: 80vw;
+  width: 20vw;
   margin: auto;
   margin-bottom: 22px;
   margin-top: 22px;
 }
 .main-menu-container{
-  border: 2px solid blue;
+  border: 1px solid silver;
   display: grid;
   grid-template-columns: 1fr 4fr;
 }

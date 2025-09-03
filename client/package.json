@@ -2,7 +2,7 @@
   "name": "client",
   "private": true,
   "version": "0.0.0",
-  "proxy":"http://localhost:5173",
+  "proxy": "http://localhost:5173",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,7 +14,7 @@
     "@emotion/styled": "^11.14.0",
     "@fontsource/inter": "^5.2.5",
     "@fontsource/roboto": "^5.2.5",
-    "@mui/icons-material": "^7.1.1",
+    "@mui/icons-material": "^7.3.1",
     "@mui/joy": "^5.0.0-beta.52",
     "@mui/material": "^7.1.0",
     "@reduxjs/toolkit": "^2.8.2",
