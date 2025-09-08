@@ -81,7 +81,7 @@ main{
   display: flex;
 }
 .menu-container{
-  border: 1px solid silver;
+  margin: 10px;
 }
 .loader{
   border: 10px solid gray;
@@ -193,8 +193,7 @@ image{
   display: flex;
   width: 20vw;
   margin: auto;
-  margin-bottom: 22px;
-  margin-top: 22px;
+  
 }
 .main-menu-container{
   border: 1px solid silver;

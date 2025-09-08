@@ -25,7 +25,9 @@ const Menu = () => {
     <>
     <div className="menu-container">
       {menus.map((item) => (
-          <Card key={item.id} sx={{ maxWidth: "100%", m :2,height:"20rem" }}  >
+          <Card key={item.id} sx={{ maxWidth: "100%", m :2,height:"20rem",border: '1px solid #ccc',
+        padding: '16px', // 
+        boxShadow: 'none', borderRadius:0}}  >
             <CardActionArea>
               <CardContent>
           <Typography gutterBottom variant="h5" component="div">

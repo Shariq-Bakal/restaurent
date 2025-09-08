@@ -4,13 +4,15 @@ import { getCategories } from "../features/category/categorySlice"; // ✅ corre
 import Button from "@mui/joy/Button";
 import { useNavigate } from 'react-router-dom';
 import { getDishes } from "../features/menu/menuSlice";
-import Box from '@mui/material/Box';
-import FormLabel from '@mui/material/FormLabel';
-import FormControl from '@mui/material/FormControl';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormHelperText from '@mui/material/FormHelperText';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import { Divider } from "@mui/material";
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
+import IconButton from '@mui/material/IconButton';
+import CommentIcon from '@mui/icons-material/Comment';
 
 const Categories = () => {
   const dispatch = useDispatch();
@@ -19,10 +21,10 @@ const Categories = () => {
   const { categories, isLoading, isError, message } = useSelector(
     (state) => state.category
   );
-
   useEffect(() => {
     dispatch(getCategories());  // Fetch categories when the component mounts
   }, [dispatch]);
+   console.log(categories)
 
   // Handle loading and error states
   if (isLoading) return <p>Loading categories...</p>;
@@ -44,31 +46,23 @@ const Categories = () => {
   }
 
   return (
-    <div className="category-buttons">
+    <>
+    <List >
       <h2>Categories: </h2>
-      <Box sx={{ display: 'flex' }}>
-      <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-        <FormLabel component="legend">Categories:</FormLabel>
-        <FormGroup>
-          {categories.map((category)=>(
-            <FormControlLabel
-            control={
-              <Checkbox checked={category.name} onChange={handleChange}  name={category.name}/>
-            }
-            label={category.name}
-          />
-          ))}
-        </FormGroup>
-        <FormHelperText>Be careful</FormHelperText>
-      </FormControl>
-    </Box>
-      <Button onClick={() => getMenu()}>All</Button>  {/* Button for All Categories */}
+      <ListItem onClick={() => getMenu()}>All</ListItem>
+        {/* Button for All Categories */}
       {categories?.map((category) => (
-        <Button onClick={() => getMenu(category._id)} key={category._id}>
+        <>
+        <ListItem onClick={() => getMenu(category._id)} key={category._id}>
           {category.name}
-        </Button>
+        </ListItem>
+        </>
+
       ))}
-    </div>
+      <Divider/>
+    </List>
+    
+    </>
   );
 };
 
